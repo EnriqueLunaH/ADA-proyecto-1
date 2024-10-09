@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
+// Function to perform bubble sort
 void bubbleSort(int arr[], int n) {
   int i, j, temp;
   for (i = 0; i < n-1; i++) {
     for (j = 0; j < n-i-1; j++) {
       if (arr[j] > arr[j+1]) {
-        // Swap arr[j] and arr[j+1]
         temp = arr[j];
         arr[j] = arr[j+1];
         arr[j+1] = temp;
@@ -16,34 +16,30 @@ void bubbleSort(int arr[], int n) {
   }
 }
 
-void printArray(int arr[], int size) {
-  int i;
-  for (i = 0; i < size; i++) {
-    printf("%d ", arr[i]);
-  }
-  printf("\n");
-}
-
 int main() {
-  int n, max_value;
-  
-  printf("Ingrese la cantidad de elementos del arreglo: ");
-  scanf("%d", &n);
-  printf("Ingrese el valor máximo para los números aleatorios: ");
-  scanf("%d", &max_value);
+  clock_t start, end;
+  double cpu_time_used;
 
-  int arr[n];
-  srand(time(0)); // Inicializa la semilla para los números aleatorios
+  start = clock();
 
-  for (int i = 0; i < n; i++) {
-    arr[i] = rand() % (max_value + 1); // Genera números aleatorios entre 0 y max_value
+  int qty = 100000, min_value = -100, max_value = 100;
+
+  int arr[qty];
+
+  srand(time(0));
+
+  for (int i = 0; i < qty; i++) {
+    arr[i] = (rand() % (max_value - min_value + 1)) + min_value;
   }
 
-  printf("Arreglo sin ordenar: \n");
-  printArray(arr, n);
-  bubbleSort(arr, n);
-  printf("Arreglo ordenado: \n");
-  printArray(arr, n);
+  printf("sorting array...\n");
+  bubbleSort(arr, qty);
+  printf("sorted array\n");
+
+  end = clock();
+  cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
+  printf("Execution time: %f\n", cpu_time_used);
 
   return 0;
 }
