@@ -11,6 +11,12 @@ Si se tiene el problema de que no compila, asegurarse de:
 
 La finalidad de este proyecto es comparar los algoritmos de ordenamiento BubbleSort y CombSort.
 
+>[!TIP]
+> Puedes ejecutarlos y compilarlos de la siguiente manera:  
+>
+> - gcc combSort.c -o combSort && ./combSort
+> - gcc bubblesort.c -o bubblesort && ./bubblesort
+
 #### Creado por
 
 Este proyecto fue creado por [Enrique](https://github.com/EnriqueLunaH).
